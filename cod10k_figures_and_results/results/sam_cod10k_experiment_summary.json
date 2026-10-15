@@ -1,0 +1,30 @@
+{
+  "project": "Camouflaged Object Detection",
+  "model": "SAM ViT-B",
+  "dataset": "COD10K",
+  "selected_epoch": 4,
+  "input_size": 1024,
+  "training_images": 2736,
+  "validation_images": 304,
+  "test_images": 2026,
+  "validation_metrics": {
+    "MAE": 0.0377,
+    "S_measure": 0.8479,
+    "Adaptive_E_measure": 0.8886,
+    "Maximum_E_measure": 0.9054,
+    "Weighted_F_measure": 0.7492,
+    "IoU": 0.6983,
+    "Dice": 0.7883
+  },
+  "test_metrics": {
+    "MAE": 0.0347,
+    "S_measure": 0.8436,
+    "Adaptive_E_measure": 0.8907,
+    "Maximum_E_measure": 0.9016,
+    "Weighted_F_measure": 0.7408,
+    "IoU": 0.6877,
+    "Dice": 0.7729
+  },
+  "five_example_mean_IoU": 0.7044,
+  "five_example_mean_Dice": 0.803
+}

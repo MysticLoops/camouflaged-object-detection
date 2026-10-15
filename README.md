@@ -7,7 +7,7 @@ A student research project exploring **camouflaged object detection (COD)** usin
 The five notebooks live in the repository root and are intended to be read in this order:
 
 1. **[`01_sam_cod_baseline.ipynb`](01_sam_cod_baseline.ipynb)** — initial SAM-based COD pipeline.
-2. **[`02_edge_aware_sam_training.ipynb`](02_edge_aware_sam_training.ipynb)** — edge-aware SAM experiments.
+2. **[`02_edge_aware_sam_experiments.ipynb`](02_edge_aware_sam_experiments.ipynb)** — edge-aware SAM experiments.
 3. **[`03_self_prompting_and_postprocessing.ipynb`](03_self_prompting_and_postprocessing.ipynb)** — self-prompting and inference-time post-processing experiments.
 4. **[`04_edge_pyramid_and_threshold_ablation.ipynb`](04_edge_pyramid_and_threshold_ablation.ipynb)** — Edge Pyramid and threshold/ablation experiments.
 5. **[`05_sam_vit_b_cod10k_final_training.ipynb`](05_sam_vit_b_cod10k_final_training.ipynb)** — full SAM ViT-B fine-tuning and final evaluation.

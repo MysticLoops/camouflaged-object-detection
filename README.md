@@ -2,7 +2,7 @@
 
 A student research project exploring **camouflaged object detection (COD)** with the Segment Anything Model (SAM), ViT-B, and the COD10K dataset.
 
-> **Main project / final approach:** [\`05_sam_vit_b_cod10k_final_training.ipynb\`](05_sam_vit_b_cod10k_final_training.ipynb)  
+> **Main project / final approach:** [`05_sam_vit_b_cod10k_final_training.ipynb`](05_sam_vit_b_cod10k_final_training.ipynb)  
 > This is the primary notebook for the project. It contains the full SAM ViT-B fine-tuning workflow and the final reported evaluation. Notebooks 01–04 document earlier experiments and exploratory attempts; they are retained for transparency and project history, but they are **not the final method** and should not be treated as equally mature or directly comparable final results.
 
 ## Start here
@@ -23,7 +23,7 @@ The earlier approaches did not consistently improve the results across metrics. 
 
 The final workflow uses SAM ViT-B as the segmentation foundation and fine-tunes it for camouflaged-object masks from COD10K.
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
     A[COD10K images and ground-truth masks] --> B[Preprocessing and data splits]
     B --> C[SAM ViT-B initialization]
@@ -31,7 +31,7 @@ flowchart TD
     D --> E[Epoch checkpoint evaluation]
     E --> F[Predicted segmentation masks]
     F --> G[Evaluation: S-measure, E-measure, weighted F, MAE, IoU, Dice]
-\`\`\`
+```
 
 The diagram describes the **final notebook's workflow**, not the sequence of every exploratory experiment.
 
@@ -84,7 +84,7 @@ These are separate notebook-reported results and should **not** be directly comp
 
 ## Setup and reproducibility
 
-The notebooks were developed for a Python/Jupyter or Google Colab workflow. [\`requirements.txt\`](requirements.txt) is an **initial dependency list**, not a fully pinned or tested environment.
+The notebooks were developed for a Python/Jupyter or Google Colab workflow. [`requirements.txt`](requirements.txt) is an **initial dependency list**, not a fully pinned or tested environment.
 
 1. Install dependencies in a fresh environment.
 2. Configure the COD10K image and mask paths.
@@ -92,7 +92,7 @@ The notebooks were developed for a Python/Jupyter or Google Colab workflow. [\`r
 4. Update dataset and checkpoint paths for your environment.
 5. Run notebook cells in order, starting with Notebook 05 for the primary approach.
 
-Some exploratory notebooks contain Google Colab-specific paths such as \`/content/dataset\` and Google Drive checkpoint locations. Replace these with paths appropriate to your environment. Training and inference at 1024-pixel input size can require substantial GPU memory and storage.
+Some exploratory notebooks contain Google Colab-specific paths such as `/content/dataset` and Google Drive checkpoint locations. Replace these with paths appropriate to your environment. Training and inference at 1024-pixel input size can require substantial GPU memory and storage.
 
 The dataset and model checkpoints are not included in this repository.
 

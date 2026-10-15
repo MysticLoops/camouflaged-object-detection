@@ -14,6 +14,24 @@ The five notebooks live in the repository root and are intended to be read in th
 
 The edge-aware and post-processing approaches are kept as intermediate experiments, including methods that did not consistently improve all metrics. They are part of the project history, not claims that each method is an improvement.
 
+## Method overview
+
+The project uses SAM ViT-B as the segmentation foundation, evaluates baseline and experimental variants, and then fine-tunes the full SAM ViT-B model for camouflaged object masks.
+
+```mermaid
+flowchart TD
+    A[COD10K images and ground-truth masks] --> B[Preprocessing and data splits]
+    B --> C[SAM ViT-B baseline]
+    C --> D[Edge-aware experiments]
+    D --> E[Self-prompting and post-processing ablations]
+    E --> F[Edge Pyramid and threshold experiments]
+    F --> G[Full SAM ViT-B fine-tuning]
+    G --> H[Prediction masks]
+    H --> I[Evaluation: S-measure, E-measure, weighted F, MAE, IoU, Dice]
+```
+
+This diagram summarizes the experiment sequence; it is not a claim that every later experiment outperformed earlier ones.
+
 ## Qualitative predictions
 
 The following figure is extracted from the saved final-training notebook output.
@@ -61,22 +79,29 @@ These are **separate notebook-reported results**. Do not compare this ablation t
 
 The metrics are also available as [CSV](cod10k_figures_and_results/results/sam_vit_b_epoch4_metrics.csv) and [JSON](cod10k_figures_and_results/results/sam_cod10k_experiment_summary.json). See [figure and results notes](cod10k_figures_and_results/README_FIGURES.md).
 
-## Dataset
+## Setup and reproducibility
 
-The experiments use **COD10K**, a dataset for camouflaged object detection. Download it from its official distribution/source and configure the dataset paths in the notebooks. The dataset is not included in this repository.
+The notebooks were developed for a Python/Jupyter or Google Colab workflow. The [`requirements.txt`](requirements.txt) provides an **initial dependency list**, not a fully pinned or tested environment. Check each notebook for additional packages and compatible versions before reproducing results.
 
-## Running the notebooks
+1. Install dependencies in a fresh environment.
+2. Configure COD10K image and mask paths.
+3. Obtain the appropriate pretrained SAM ViT-B weights and any experiment-specific checkpoints.
+4. Update checkpoint and dataset paths to match your environment.
+5. Run notebook cells in order.
 
-The notebooks were developed for a Python/Jupyter or Google Colab workflow. Before running them:
+Some notebooks contain Google Colab-specific paths such as `/content/dataset` and Google Drive checkpoint locations. These are environment-specific examples, not paths that will work on every machine. Replace them with your own paths before running locally.
 
-1. Install the dependencies required by the specific notebook.
-2. Configure COD10K image and mask paths for your environment.
-3. Obtain the appropriate pretrained SAM ViT-B weights and configure the checkpoint path.
-4. Run the notebook cells in order.
+Training and inference at 1024-pixel input size can require substantial GPU memory and storage. The dataset and model checkpoints are not included in this repository.
 
-Training and inference at 1024-pixel input size can require substantial GPU memory and storage. A `requirements.txt` will be added after the dependencies and versions used across the notebooks have been checked; until then, do not assume a single pinned environment is available.
+## Limitations
 
-## Project artifacts and reproducibility
+- Camouflaged objects can have weak boundaries and low contrast with the background.
+- Edge-aware, self-prompting, and post-processing experiments did not consistently improve every reported metric.
+- Reported numbers come from notebook outputs and have not been independently rerun for this repository.
+- The final-training results and post-processing ablation use separate evaluation protocols and should not be directly compared without checking the protocols.
+- Reproduction depends on dataset availability, model weights, library versions, and matching evaluation settings.
+
+## Project artifacts
 
 The repository includes notebook-derived qualitative figures and compact metric files. Large checkpoints, COD10K data, and cached embeddings are intentionally not included.
 

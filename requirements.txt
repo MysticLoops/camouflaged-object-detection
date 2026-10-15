@@ -1,0 +1,21 @@
+# Core notebook environment
+numpy
+pandas
+Pillow
+matplotlib
+tqdm
+scipy
+scikit-image
+opencv-python
+
+# Deep learning
+torch
+torchvision
+
+# Segment Anything Model (SAM)
+# Install the official SAM repository:
+git+https://github.com/facebookresearch/segment-anything.git
+
+# Notebook environment
+jupyter
+ipykernel
